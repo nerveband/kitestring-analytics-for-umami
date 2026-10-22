@@ -1,6 +1,6 @@
 # Simply Analytics for Umami 1.1.3 implementation and release plan
 
-The release will remove all reported npm advisories, verify the plugin in its documented test environment, and publish the installable ZIP. WordPress.org publication depends on the directory approving Simply Umami and granting repository access.
+The release will remove all reported npm advisories, verify the plugin in its documented test environment, and publish the installable ZIP. WordPress.org publication depends on the directory approving Simply Analytics for Umami and granting repository access.
 
 ## Findings
 
@@ -39,11 +39,13 @@ Version 1.1.2 remains available as a GitHub release. Stop the new test container
 
 The npm audit reports zero vulnerabilities after replacing wp-env. Composer validation and its dependency audit pass. All eleven Playwright tests pass against WordPress 7.1.3 and PHP 8.3 in the new Compose environment. PHP coding standards pass with two intentional warnings for service-managed tracker and recorder script versions.
 
-WordPress.org has pended the submission and is waiting on action from the author. The October 6 review email raises two issues: naming/trademark distinction and ownership/affiliation clarification. The site still lists the 1.1.1 submission. The author chose Simply Analytics for Umami, with proposed slug simply-analytics-for-umami. Update the matching code, artwork, and review reply; upload the corrected ZIP and request approval to send the concrete reviewer reply. Do not claim public directory approval or enable the SVN release gate while review is pending.
+WordPress.org accepted the updated 1.1.3 ZIP for review under Simply Analytics for Umami. The approved reply was sent in the existing review thread, requesting the slug `simply-analytics-for-umami` and confirming independent maintenance, GPL licensing, retained upstream authorship, and no Umami affiliation or endorsement. The assigned slug remains `simply-umami` until the reviewer changes it. Human review and repository access remain pending, so the SVN release gate remains disabled. This is a review submission, not a live public directory release.
 
 The Compose migration passed all eleven tests on WordPress 6.8 with PHP 8.1 before the branding changes. The renamed production package passes Plugin Check with zero errors and two intentional script-version warnings.
 
-Docker reached its disk limit during the renamed-package checks. Only this task's disposable legacy containers, volumes, and fetched legacy image were removed. The renamed package passes all eleven browser tests, including a separate rerun of the dashboard link test after removing a duplicate dashboard navigation. The banner, both settings screenshots, and the plugin settings action link were visually checked. The production ZIP passes archive integrity and source-content checks. GitHub release publication and upload of the corrected WordPress.org review submission are the remaining publication steps.
+Docker reached its disk limit during the renamed-package checks. Only this task's disposable legacy containers, volumes, and fetched legacy image were removed. The renamed package passes all eleven browser tests, including a separate rerun of the dashboard link test after removing a duplicate dashboard navigation. The banner, both settings screenshots, and the plugin settings action link were visually checked. The production ZIP passes archive integrity and source-content checks. The published GitHub ZIP was also checked against the tested source. The test containers are stopped.
+
+[GitHub release 1.1.3](https://github.com/nerveband/simply-umami/releases/tag/v1.1.3) is published as Simply Analytics for Umami. Release CI passed all eleven browser tests, dependency audits, and PHP coding standards before packaging. The only remaining publication dependency is WordPress.org human approval and repository access.
 
 ## Writing changes
 
