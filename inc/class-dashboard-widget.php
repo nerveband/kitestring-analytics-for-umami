@@ -33,6 +33,10 @@ class DashboardWidget {
 	 * @since 0.8.0
 	 */
 	public function add_widget() {
+		if ( ! current_user_can( 'manage_options' ) ) {
+			return;
+		}
+
 		wp_add_dashboard_widget(
 			'umami_widget',
 			'Umami Analytics',
@@ -48,6 +52,10 @@ class DashboardWidget {
 	 * @change 0.9.0 - Show live stats via API when configured.
 	 */
 	public function render_widget() {
+		if ( ! current_user_can( 'manage_options' ) ) {
+			return;
+		}
+
 		$options    = Options::get_options();
 		$website_id = $options['website_id'];
 		$host_url   = $options['host_url'];

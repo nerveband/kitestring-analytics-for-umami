@@ -69,7 +69,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 	</section>
 
 	<details class="simply-umami-section" id="advanced-options">
-		<summary><span><?php esc_html_e( 'Tracking options', 'simply-umami' ); ?></span><span class="simply-umami-summary-note"><?php esc_html_e( 'Privacy, events, and collection behavior', 'simply-umami' ); ?></span></summary>
+		<summary>
+			<span><?php esc_html_e( 'Tracking options', 'simply-umami' ); ?></span>
+			<span class="simply-umami-summary-note"><?php esc_html_e( 'Privacy, events, and collection behavior', 'simply-umami' ); ?></span>
+		</summary>
 		<div class="simply-umami-section-body">
 			<table class="form-table">
 				<tr>
@@ -318,7 +321,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 	</details>
 
 	<details class="simply-umami-section" id="recorder-options">
-		<summary><span><?php esc_html_e( 'Heatmaps and session replay', 'simply-umami' ); ?></span><span class="simply-umami-summary-note"><?php esc_html_e( 'Separate opt-in', 'simply-umami' ); ?></span></summary>
+		<summary>
+			<span><?php esc_html_e( 'Heatmaps and session replay', 'simply-umami' ); ?></span>
+			<span class="simply-umami-summary-note"><?php esc_html_e( 'Separate opt-in', 'simply-umami' ); ?></span>
+		</summary>
 		<div class="simply-umami-section-body">
 			<p class="description">
 				<?php esc_html_e( 'Recorder support is off by default. Also enable heatmaps or replay in your Umami website settings.', 'simply-umami' ); ?>
@@ -348,7 +354,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 	</details>
 
 	<details class="simply-umami-section" id="api-options">
-		<summary><span><?php esc_html_e( 'Dashboard connection', 'simply-umami' ); ?></span><span class="simply-umami-summary-note"><?php esc_html_e( 'Optional API credentials', 'simply-umami' ); ?></span></summary>
+		<summary>
+			<span><?php esc_html_e( 'Dashboard connection', 'simply-umami' ); ?></span>
+			<span class="simply-umami-summary-note"><?php esc_html_e( 'Optional API credentials', 'simply-umami' ); ?></span>
+		</summary>
 		<div class="simply-umami-section-body">
 			<p class="description">
 				<?php

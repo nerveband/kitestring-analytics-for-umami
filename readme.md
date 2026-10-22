@@ -4,7 +4,7 @@
 
 Connect WordPress to Umami Analytics. Use your own Umami server or Umami Cloud.
 
-Version 1.1.1. Requires WordPress 6.0+ and PHP 7.4+.
+Version 1.1.2. Requires WordPress 6.0+ and PHP 7.4+.
 
 Submitted to WordPress.org. Waiting for review.
 
@@ -79,6 +79,8 @@ These filters do not replace browser consent controls. Check that your page cach
 
 ## Development
 
+Use Node.js 24.18 or later, npm 11.16 or later, Composer, and Docker.
+
 ```sh
 composer install
 npm ci
@@ -93,7 +95,7 @@ To build a ZIP, run `composer install --no-dev --optimize-autoloader`. Put `simp
 
 ## Changes and assets
 
-Version 1.1.1 updates the settings layout and artwork. Tracking and saved settings are unchanged. See [readme.txt](readme.txt) for the full changelog.
+Version 1.1.2 restricts dashboard analytics to administrators and preserves API passwords exactly. See [readme.txt](readme.txt) for the full changelog.
 
 | Asset | Files |
 |---|---|

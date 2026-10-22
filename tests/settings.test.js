@@ -96,3 +96,53 @@ test('dashboard link preserves a custom port and application base path', async (
         'href', `https://umami.example.com:8443/analytics/websites/${configured.website_id}`
     );
 });
+
+test('saving API passwords preserves spaces and special characters', async ({ page }) => {
+    test.setTimeout(60000);
+    await login(page);
+    await page.goto('/wp-admin/options-general.php?page=simply-umami');
+    await page.locator('#api-options summary').click();
+    const password = '  example <tag> & %20 password  ';
+    await page.locator('#simply_umami_api_password').fill(password);
+    await page.getByRole('button', { name: 'Save settings' }).click();
+    await page.waitForURL(/settings-updated=true/);
+    await expect(page.locator('#simply_umami_api_password')).toHaveValue(password);
+});
+
+test('subscribers cannot view the analytics dashboard widget', async ({ page }) => {
+    runCommand('user create umami-subscriber subscriber@example.test --role=subscriber --user_pass=test-subscriber-password --quiet');
+    try {
+        await page.goto('/wp-login.php');
+        await page.fill('#user_login', 'umami-subscriber');
+        await page.fill('#user_pass', 'test-subscriber-password');
+        await page.click('#wp-submit');
+        await page.waitForURL(/wp-admin/);
+        await page.goto('/wp-admin/');
+        await expect(page.locator('#umami_widget')).toHaveCount(0);
+    } finally {
+        runCommand('user delete umami-subscriber --yes --quiet');
+    }
+});
+
+test('self-hosted API login sends the saved password unchanged', () => {
+    const code = `
+        $password = '  example <tag> & %20 password  ';
+        $options = get_option('simply_umami_options');
+        $options['api_username'] = 'test-user';
+        $options['api_password'] = $password;
+        update_option('simply_umami_options', $options);
+        add_filter('pre_http_request', function($response, $args, $url) use ($password) {
+            $body = json_decode($args['body'], true);
+            if ($body['password'] !== $password) {
+                throw new Exception('API password was modified');
+            }
+            return array('response' => array('code' => 200), 'body' => '{"token":"test-token"}');
+        }, 10, 3);
+        if (!SimplyUmami\\ApiClient::from_options()->login()) {
+            throw new Exception('API login failed');
+        }
+        echo 'password-preserved';
+    `;
+    const encoded = Buffer.from(code).toString('base64');
+    expect(runCommand(`eval eval(base64_decode('${encoded}'));`)).toContain('password-preserved');
+});

@@ -1,7 +1,7 @@
 === Simply Umami ===
 Contributors: nerveband, ancocodet
 Tags: analytics, umami, privacy, statistics
-Stable tag: 1.1.1
+Stable tag: 1.1.2
 Requires at least: 6.0
 Tested up to: 7.1
 Requires PHP: 7.4
@@ -93,6 +93,11 @@ The obsolete data-cache tracker option was removed. It does not control the plug
 2. Recorder opt-in, server requirements, and sensitive-data warnings in the redesigned settings page.
 
 == Changelog ==
+
+= 1.1.2 =
+* Restrict the analytics dashboard widget to administrators who can manage plugin settings.
+* Preserve spaces and special characters in self-hosted API passwords.
+* Remove unused test tooling and update development dependencies.
 
 = 1.1.1 =
 * Simplify settings layout, field labels, privacy warnings, and save guidance.

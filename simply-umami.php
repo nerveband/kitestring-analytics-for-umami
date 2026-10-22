@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Simply Umami
  * Description: Simple, privacy-focused Umami Analytics integration for WordPress.
- * Version: 1.1.1
+ * Version: 1.1.2
  * Author: Ashraf Ali
  * Author URI: https://ashrafali.net
  * Plugin URI: https://github.com/nerveband/simply-umami
@@ -24,7 +24,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 require plugin_dir_path( __FILE__ ) . 'vendor/autoload.php';
 
-define( 'SIMPLY_UMAMI_VERSION', '1.1.1' );
+define( 'SIMPLY_UMAMI_VERSION', '1.1.2' );
 define( 'SIMPLY_UMAMI_BASE_FILE', __FILE__ );
 
 /**

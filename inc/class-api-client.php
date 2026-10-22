@@ -114,7 +114,7 @@ class ApiClient {
 
 		$api_key  = trim( $options['api_key'] ?? '' );
 		$username = trim( $options['api_username'] ?? '' );
-		$password = trim( $options['api_password'] ?? '' );
+		$password = $options['api_password'] ?? '';
 
 		return new self( $base_url, $website_id, $username, $password, $api_key );
 	}

@@ -158,7 +158,7 @@ class Settings {
 			'recorder_url'      => esc_url_raw( trim( $data['recorder_url'] ?? '' ) ),
 			'api_key'           => sanitize_text_field( $data['api_key'] ?? '' ),
 			'api_username'      => sanitize_text_field( $data['api_username'] ?? '' ),
-			'api_password'      => sanitize_text_field( $data['api_password'] ?? '' ),
+			'api_password'      => $data['api_password'] ?? '',
 		);
 	}
 
