@@ -2,7 +2,7 @@
 /.git
 /.github
 
-simply-umami.zip
+simply-analytics-for-umami.zip
 
 .distignore
 .gitignore
@@ -14,7 +14,10 @@ package-lock.json
 package.json
 /tests
 /test-results
-.wp-env.json
 phpcs.xml
 .cz.json
 .gitattributes
+
+/compose.yaml
+/scripts
+IMPLEMENTATION_PLAN.md

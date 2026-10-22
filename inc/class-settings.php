@@ -25,7 +25,7 @@ class Settings {
 			add_action( 'admin_init', array( $this, 'register_settings' ) );
 			add_action( 'admin_menu', array( $this, 'add_page' ) );
 		}
-		add_action( 'plugin_action_links_simply-umami/simply-umami.php', array( $this, 'plugin_actions' ) );
+		add_action( 'plugin_action_links_' . plugin_basename( SIMPLY_UMAMI_BASE_FILE ), array( $this, 'plugin_actions' ) );
 	}
 
 	/**
@@ -41,12 +41,12 @@ class Settings {
 		$url = esc_url(
 			add_query_arg(
 				'page',
-				'simply-umami',
+				'simply-analytics-for-umami',
 				get_admin_url() . 'options-general.php'
 			)
 		);
 
-		$settings_link = "<a href='{$url}'>" . __( 'Settings', 'simply-umami' ) . '</a>';
+		$settings_link = "<a href='{$url}'>" . __( 'Settings', 'simply-analytics-for-umami' ) . '</a>';
 
 		$links[] = $settings_link;
 
@@ -99,10 +99,10 @@ class Settings {
 	 */
 	public function add_page() {
 		$page = add_options_page(
-			__( 'Simply Umami', 'simply-umami' ),
-			__( 'Simply Umami', 'simply-umami' ),
+			__( 'Simply Analytics for Umami', 'simply-analytics-for-umami' ),
+			__( 'Simply Analytics', 'simply-analytics-for-umami' ),
 			'manage_options',
-			'simply-umami',
+			'simply-analytics-for-umami',
 			array( $this, 'render_options_page' )
 		);
 
@@ -176,17 +176,17 @@ class Settings {
 				<header class="simply-umami-header">
 					<img src="<?php echo esc_url( plugins_url( 'css/icon.png', SIMPLY_UMAMI_BASE_FILE ) ); ?>" alt="" width="48" height="48" />
 					<div>
-						<h1><?php esc_html_e( 'Simply Umami', 'simply-umami' ); ?></h1>
-						<p><?php esc_html_e( 'Tracking and dashboard settings', 'simply-umami' ); ?></p>
+						<h1><?php esc_html_e( 'Simply Analytics for Umami', 'simply-analytics-for-umami' ); ?></h1>
+						<p><?php esc_html_e( 'Tracking and dashboard settings', 'simply-analytics-for-umami' ); ?></p>
 					</div>
 					<span class="simply-umami-status">
 						<?php
 						if ( ! $options['enabled'] ) {
-							esc_html_e( 'Tracking off', 'simply-umami' );
+							esc_html_e( 'Tracking off', 'simply-analytics-for-umami' );
 						} elseif ( empty( $options['script_url'] ) || empty( $options['website_id'] ) ) {
-							esc_html_e( 'Setup incomplete', 'simply-umami' );
+							esc_html_e( 'Setup incomplete', 'simply-analytics-for-umami' );
 						} else {
-							esc_html_e( 'Tracking configured', 'simply-umami' );
+							esc_html_e( 'Tracking configured', 'simply-analytics-for-umami' );
 						}
 						?>
 					</span>

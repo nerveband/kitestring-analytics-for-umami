@@ -14,6 +14,8 @@ jobs:
           php-version: '8.3'
       - name: Install dependencies
         run: composer install --prefer-dist --no-progress
+      - name: Audit PHP dependencies
+        run: composer audit --locked
       - name: Check installed cs rules
         run: vendor/bin/phpcs -i
       - name: CS Check
@@ -41,7 +43,8 @@ jobs:
       run: |
         composer install --no-progress --no-dev
         npm ci
-        WP_ENV_CORE=wordpress/wordpress#${{ matrix.wpVersion }} WP_ENV_PHP_VERSION=${{ matrix.phpVersion }} npm run env start
+        npm run audit
+        WORDPRESS_VERSION=${{ matrix.wpVersion }} PHP_VERSION=${{ matrix.phpVersion }} npm start
     - name: Install Playwright Browsers
       run: npx playwright install chromium
     - name: Run Playwright tests
@@ -49,7 +52,7 @@ jobs:
     - uses: actions/upload-artifact@v4
       if: failure()
       with:
-        name: playwright-report
+        name: playwright-report-${{ matrix.wpVersion }}-${{ matrix.phpVersion }}
         path: playwright-report/
         retention-days: 30
   automerge:

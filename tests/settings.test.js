@@ -44,10 +44,10 @@ test('administrator exclusion does not exclude anonymous visitors', async ({ pag
     await expect(page.locator('script[data-website-id]')).toHaveAttribute('data-website-id', configured.website_id);
 });
 test('deactivation and reactivation retain configured tracking', async ({ page }) => {
-    runCommand('plugin deactivate simply-umami --quiet');
+    runCommand('plugin deactivate simply-analytics-for-umami --quiet');
     await page.goto('/');
     await expect(page.locator('script[data-website-id]')).toHaveCount(0);
-    runCommand('plugin activate simply-umami --quiet');
+    runCommand('plugin activate simply-analytics-for-umami --quiet');
     await page.goto('/');
     await expect(page.locator('script[data-website-id]')).toHaveAttribute('data-website-id', configured.website_id);
 });
@@ -91,7 +91,6 @@ test('dashboard link preserves a custom port and application base path', async (
         use_host_url: 0,
     });
     await login(page);
-    await page.goto('/wp-admin/');
     await expect(page.locator('#umami_widget a')).toHaveAttribute(
         'href', `https://umami.example.com:8443/analytics/websites/${configured.website_id}`
     );
@@ -100,7 +99,7 @@ test('dashboard link preserves a custom port and application base path', async (
 test('saving API passwords preserves spaces and special characters', async ({ page }) => {
     test.setTimeout(60000);
     await login(page);
-    await page.goto('/wp-admin/options-general.php?page=simply-umami');
+    await page.goto('/wp-admin/options-general.php?page=simply-analytics-for-umami');
     await page.locator('#api-options summary').click();
     const password = '  example <tag> & %20 password  ';
     await page.locator('#simply_umami_api_password').fill(password);

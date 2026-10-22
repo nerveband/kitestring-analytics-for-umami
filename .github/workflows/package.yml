@@ -9,7 +9,37 @@ permissions:
   contents: write
 
 jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          coverage: none
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.x'
+      - name: Install and audit dependencies
+        run: |
+          composer install --prefer-dist --no-progress
+          composer validate --no-check-publish
+          composer audit --locked
+          npm ci
+          npm run audit
+      - name: PHP coding standards
+        run: vendor/bin/phpcs --runtime-set ignore_warnings_on_exit true --standard=phpcs.xml ./
+      - name: Start WordPress and test
+        run: |
+          npm start
+          npx playwright install --with-deps chromium
+          npm test -- --reporter=line
+      - name: Stop test environment
+        if: always()
+        run: npm stop
+
   package:
+    needs: validate
     runs-on: ubuntu-latest
     if: startsWith(github.ref, 'refs/tags/')
     steps:
@@ -18,14 +48,14 @@ jobs:
         run: composer install --prefer-dist --no-progress --no-dev --optimize-autoloader
       - name: Package installable plugin
         run: |
-          mkdir -p build/simply-umami
-          cp -R simply-umami.php inc css js vendor composer.json LICENSE.md readme.txt build/simply-umami/
+          mkdir -p build/simply-analytics-for-umami
+          cp -R simply-analytics-for-umami.php inc css js vendor composer.json LICENSE.md readme.txt build/simply-analytics-for-umami/
           cd build
-          zip -r simply-umami.zip simply-umami
+          zip -r simply-analytics-for-umami.zip simply-analytics-for-umami
       - name: Create GitHub release
         uses: softprops/action-gh-release@v2
         with:
-          files: build/simply-umami.zip
+          files: build/simply-analytics-for-umami.zip
 
   wordpress:
     runs-on: ubuntu-latest
@@ -40,4 +70,4 @@ jobs:
         env:
           SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
           SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
-          SLUG: simply-umami
+          SLUG: simply-analytics-for-umami

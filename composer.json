@@ -1,6 +1,6 @@
 {
-    "name": "nerveband/simply-umami",
-    "description": "Wordpress Umami Analytics Integration",
+    "name": "nerveband/simply-analytics-for-umami",
+    "description": "Independent WordPress integration for Umami Analytics",
     "type": "wordpress-plugin",
     "license": "GPL-3.0-or-later",
     "authors": [

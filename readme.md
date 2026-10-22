@@ -1,23 +1,29 @@
-# Simply Umami
+# Simply Analytics for Umami
 
-![Simply Umami: Umami Analytics for WordPress, self-hosted or Cloud.](.wordpress-org/banner-1544x500.png)
+![Simply Analytics for Umami: Umami Analytics for WordPress, self-hosted or Cloud.](.wordpress-org/banner-1544x500.png)
 
 Connect WordPress to Umami Analytics. Use your own Umami server or Umami Cloud.
 
-Version 1.1.2. Requires WordPress 6.0+ and PHP 7.4+.
+An independent integration maintained by Ashraf Ali, based on Integrate Umami by Ancocodet. It is not affiliated with, endorsed by, or supported by Umami.
 
-Submitted to WordPress.org. Waiting for review.
+Version 1.1.3. Requires WordPress 6.0+ and PHP 7.4+.
+
+WordPress.org review is in progress. The plugin is not yet listed in the directory.
 
 ## Setup
 
-1. Install the plugin ZIP and activate Simply Umami.
-2. Open **Settings > Simply Umami**.
+1. Install the plugin ZIP and activate Simply Analytics for Umami.
+2. Open **Settings > Simply Analytics for Umami**.
 3. Copy the **Script URL** and **Website ID** from Umami.
 4. Check **Enabled** and save.
 5. Clear your page cache and CDN cache, if used.
 6. Visit your site while signed out to check tracking. Admin visits are excluded by default.
 
 API access is optional. Add a username and password for a self-hosted server, or an API key for Umami Cloud, to show stats in WordPress. Tracking works without these details.
+
+## Upgrading from Simply Umami
+
+Deactivate the old Simply Umami plugin before installing and activating this renamed plugin. Saved tracking settings and API credentials are retained. Do not run both plugins together.
 
 ## Settings
 
@@ -79,7 +85,7 @@ These filters do not replace browser consent controls. Check that your page cach
 
 ## Development
 
-Use Node.js 24.18 or later, npm 11.16 or later, Composer, and Docker.
+Use Node.js 24, npm, Composer, and Docker with Compose. Both `docker compose` and the standalone `docker-compose` command are supported.
 
 ```sh
 composer install
@@ -89,13 +95,17 @@ npx playwright install chromium
 npm test -- --reporter=line
 ```
 
-The local WordPress site runs at `http://localhost:8888`. Tested with self-hosted Umami 3.4.0. Signed-in Umami Cloud features have not been tested.
+The local WordPress site runs at `http://localhost:8888`. Docker Compose starts WordPress, MariaDB, and WP-CLI, then installs WordPress and activates the plugin. The test administrator is `admin` with password `password`. Use this environment only for local development.
 
-To build a ZIP, run `composer install --no-dev --optimize-autoloader`. Put `simply-umami.php`, `inc/`, `css/`, `js/`, `vendor/`, `composer.json`, `LICENSE.md`, and `readme.txt` in one `simply-umami/` folder. Leave out tests, Git files, credentials, and local settings.
+Run `npm run env -- run cli -- wp plugin list` for WP-CLI commands and `npm stop` to stop the containers while keeping test data. Set `WORDPRESS_VERSION` and `PHP_VERSION` before starting to test another core/PHP combination, as CI does. Use a different `COMPOSE_PROJECT_NAME` and `WP_PORT` for each combination so it gets its own database and files. Run `npm run audit` and `composer audit --locked` to check dependencies.
+
+Tested with self-hosted Umami 3.4.0. Signed-in Umami Cloud features have not been tested.
+
+To build a ZIP, run `composer install --no-dev --optimize-autoloader`. Put `simply-analytics-for-umami.php`, `inc/`, `css/`, `js/`, `vendor/`, `composer.json`, `LICENSE.md`, and `readme.txt` in one `simply-analytics-for-umami/` folder. Leave out tests, Git files, credentials, and local settings.
 
 ## Changes and assets
 
-Version 1.1.2 restricts dashboard analytics to administrators and preserves API passwords exactly. See [readme.txt](readme.txt) for the full changelog.
+Version 1.1.3 removes the remaining npm advisories and tests releases before packaging. Version 1.1.2 restricts dashboard analytics to administrators and preserves API passwords exactly. See [readme.txt](readme.txt) for the full changelog.
 
 | Asset | Files |
 |---|---|

@@ -15,5 +15,5 @@ jobs:
       env:
         SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
         SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
-        SLUG: simply-umami
+        SLUG: simply-analytics-for-umami
         IGNORE_OTHER_FILES: true

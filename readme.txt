@@ -1,7 +1,7 @@
-=== Simply Umami ===
+=== Simply Analytics for Umami ===
 Contributors: nerveband, ancocodet
 Tags: analytics, umami, privacy, statistics
-Stable tag: 1.1.2
+Stable tag: 1.1.3
 Requires at least: 6.0
 Tested up to: 7.1
 Requires PHP: 7.4
@@ -12,7 +12,9 @@ Connect WordPress to your own Umami Analytics instance or Umami Cloud.
 
 == Description ==
 
-Simply Umami adds your configured Umami tracking script to public WordPress pages. Tracking is disabled until you configure a script URL and Website ID and explicitly enable it.
+An independent integration maintained by Ashraf Ali. This plugin is not affiliated with, endorsed by, or supported by Umami.
+
+Simply Analytics for Umami adds your configured Umami tracking script to public WordPress pages. Tracking is disabled until you configure a script URL and Website ID and explicitly enable it.
 
 Features:
 
@@ -47,9 +49,9 @@ Umami Cloud: [Privacy policy](https://umami.is/privacy) and [Terms](https://umam
 
 == Installation ==
 
-1. Upload the simply-umami directory to /wp-content/plugins/, or upload the plugin ZIP through Plugins > Add New.
-2. Activate Simply Umami.
-3. Open Settings > Simply Umami.
+1. Upload the simply-analytics-for-umami directory to /wp-content/plugins/, or upload the plugin ZIP through Plugins > Add New.
+2. Activate Simply Analytics for Umami.
+3. Open Settings > Simply Analytics.
 4. Copy the Script URL and Website ID from your Umami website's tracking code.
 5. Enable analytics and save changes.
 6. Purge page caches, including LiteSpeed or CDN caches, after changing tracking configuration.
@@ -75,6 +77,9 @@ The simply_umami_tracker_attributes filter accepts the data-attribute array and 
 
 == Frequently Asked Questions ==
 
+= How do I upgrade from Simply Umami? =
+Deactivate Simply Umami before installing and activating Simply Analytics for Umami. Your saved settings and API credentials are retained. Do not enable both plugins together.
+
 = Why is no tracking script present? =
 Check that the plugin is active, Enabled is checked, and Script URL and Website ID are filled in. Test signed out, then purge your page cache. Browser blockers, Do Not Track, domain restrictions, or disabled automatic tracking can also prevent collection after the script is present.
 
@@ -93,6 +98,13 @@ The obsolete data-cache tracker option was removed. It does not control the plug
 2. Recorder opt-in, server requirements, and sensitive-data warnings in the redesigned settings page.
 
 == Changelog ==
+
+= 1.1.3 =
+* Rename the plugin to Simply Analytics for Umami and clarify its independent authorship.
+* Use the simply-analytics-for-umami slug and text domain while retaining saved settings.
+* Remove all remaining npm advisories by replacing wp-env with Docker Compose.
+* Run dependency audits, PHP standards, and browser tests before release packaging.
+* Keep the existing WP-CLI developer commands and browser regression coverage.
 
 = 1.1.2 =
 * Restrict the analytics dashboard widget to administrators who can manage plugin settings.
