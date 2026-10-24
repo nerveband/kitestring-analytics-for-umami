@@ -29,7 +29,7 @@ Features:
 * Native custom events, event data, identity/session data, and revenue events through the official Umami tracker APIs.
 * WordPress filters for page/consent gating, dynamic visitor IDs, future tracker attributes, and recorder exclusions.
 
-Based on [Integrate Umami by Ancocodet](https://github.com/Ancocodet/wp-umami). Original authorship and GPL licensing are retained. Source and development: [GitHub](https://github.com/nerveband/simply-umami).
+Based on [Integrate Umami by Ancocodet](https://github.com/Ancocodet/wp-umami). Original authorship and GPL licensing are retained. Source and development: [GitHub](https://github.com/nerveband/kitestring-analytics-for-umami).
 
 === External services and privacy ===
 

@@ -5,7 +5,7 @@
  * Version: 1.1.4
  * Author: Ashraf Ali
  * Author URI: https://ashrafali.net
- * Plugin URI: https://github.com/nerveband/simply-umami
+ * Plugin URI: https://github.com/nerveband/kitestring-analytics-for-umami
  * License: GPLv3 or later
  * Text Domain: kitestring-analytics-for-umami
  * Requires at least: 6.0

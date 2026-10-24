@@ -6,7 +6,7 @@ The entry file, package folder, text domain, PHP namespace, constants, hooks, op
 
 PHP standards and production Plugin Check report zero errors and the same two intentional service-managed script-version warnings. The eleven existing browser tests passed. The added settings-and-credentials migration test passed after correcting its test argument formatting. npm and Composer audits are clean. Composer metadata validates, the production ZIP has 25 files and passes integrity checks, and the new banner and settings screenshots were visually inspected with no horizontal overflow.
 
-Remaining `simply` matches are the actual GitHub repository URL, the legacy option key and migration fixture, and the historical 1.1.3 record below. No current plugin name, admin label, asset text, text domain, or package identifier retains the previous brand. This checkout and the Compose project still use the existing local directory name; the installable package uses the Kitestring folder.
+Remaining `simply` matches are the legacy option key and migration fixture, and the historical 1.1.3 record below. No current plugin name, admin label, asset text, text domain, or package identifier retains the previous brand. This checkout and the Compose project still use the existing local directory name; the installable package uses the Kitestring folder.
 
 Upload the ZIP to the existing review with the requested slug comment. No reviewer email is authorized for this revision. WordPress.org approval remains external.
 
@@ -59,7 +59,7 @@ The Compose migration passed all eleven tests on WordPress 6.8 with PHP 8.1 befo
 
 Docker reached its disk limit during the renamed-package checks. Only this task's disposable legacy containers, volumes, and fetched legacy image were removed. The renamed package passes all eleven browser tests, including a separate rerun of the dashboard link test after removing a duplicate dashboard navigation. The banner, both settings screenshots, and the plugin settings action link were visually checked. The production ZIP passes archive integrity and source-content checks. The published GitHub ZIP was also checked against the tested source. The test containers are stopped.
 
-[GitHub release 1.1.3](https://github.com/nerveband/simply-umami/releases/tag/v1.1.3) is published as Simply Analytics for Umami. Release CI passed all eleven browser tests, dependency audits, and PHP coding standards before packaging. The only remaining publication dependency is WordPress.org human approval and repository access.
+[GitHub release 1.1.3](https://github.com/nerveband/kitestring-analytics-for-umami/releases/tag/v1.1.3) is published as Simply Analytics for Umami. Release CI passed all eleven browser tests, dependency audits, and PHP coding standards before packaging. The only remaining publication dependency is WordPress.org human approval and repository access.
 
 ## Writing changes
 
