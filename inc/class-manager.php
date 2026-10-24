@@ -1,5 +1,5 @@
 <?php
-namespace SimplyUmami;
+namespace KitestringUmami;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -48,7 +48,7 @@ class Manager {
 		if ( ! $options['enabled'] || ( $options['ignore_admins'] === 1 && current_user_can( 'manage_options' ) ) ) {
 			return;
 		}
-		if ( ! apply_filters( 'simply_umami_tracking_allowed', true, $options ) ) {
+		if ( ! apply_filters( 'kitestring_umami_tracking_allowed', true, $options ) ) {
 			return;
 		}
 
@@ -80,26 +80,26 @@ class Manager {
 		if ( ! empty( $options['host_url'] ) && ! empty( $options['use_host_url'] ) ) {
 			$attrs['data-host-url'] = trim( $options['host_url'] );
 		}
-		$attrs = apply_filters( 'simply_umami_tracker_attributes', $attrs, $options );
+		$attrs = apply_filters( 'kitestring_umami_tracker_attributes', $attrs, $options );
 
-		$this->script_attributes['simply-umami-tracker'] = $attrs;
+		$this->script_attributes['kitestring-umami-tracker'] = $attrs;
 		// Service-managed URLs must retain their own query parameters and cache policy.
-		wp_enqueue_script( 'simply-umami-tracker', $script_url, array(), null, true );
-		if ( apply_filters( 'simply_umami_recorder_enabled', (bool) $options['recorder_enabled'], $options ) ) {
+		wp_enqueue_script( 'kitestring-umami-tracker', $script_url, array(), null, true );
+		if ( apply_filters( 'kitestring_umami_recorder_enabled', (bool) $options['recorder_enabled'], $options ) ) {
 			$recorder_url = trim( $options['recorder_url'] );
 			if ( '' === $recorder_url ) {
 				$recorder_url = Options::get_script_base_url( $script_url ) . '/recorder.js';
 			}
-			$this->script_attributes['simply-umami-recorder'] = array(
+			$this->script_attributes['kitestring-umami-recorder'] = array(
 				'data-website-id' => $attrs['data-website-id'],
 			);
 			if ( ! empty( $attrs['data-host-url'] ) ) {
-				$this->script_attributes['simply-umami-recorder']['data-host-url'] = $attrs['data-host-url'];
+				$this->script_attributes['kitestring-umami-recorder']['data-host-url'] = $attrs['data-host-url'];
 			}
-			wp_enqueue_script( 'simply-umami-recorder', $recorder_url, array( 'simply-umami-tracker' ), null, true );
+			wp_enqueue_script( 'kitestring-umami-recorder', $recorder_url, array( 'kitestring-umami-tracker' ), null, true );
 		}
 		if ( ! empty( $options['track_comments'] ) ) {
-			wp_enqueue_script( 'simply-umami-comments', plugin_dir_url( SIMPLY_UMAMI_BASE_FILE ) . 'js/comments.js', array( 'simply-umami-tracker' ), SIMPLY_UMAMI_VERSION, true );
+			wp_enqueue_script( 'kitestring-umami-comments', plugin_dir_url( KITESTRING_UMAMI_BASE_FILE ) . 'js/comments.js', array( 'kitestring-umami-tracker' ), KITESTRING_UMAMI_VERSION, true );
 		}
 	}
 

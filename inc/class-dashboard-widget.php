@@ -1,6 +1,6 @@
 <?php
 
-namespace SimplyUmami;
+namespace KitestringUmami;
 
 /**
  * Class Widget
@@ -64,7 +64,7 @@ class DashboardWidget {
 		// Check if the settings are configured.
 		if ( empty( $website_id ) || empty( $script_url ) ) {
 			echo wp_kses(
-				__( 'Please configure the Umami Analytics settings.', 'simply-analytics-for-umami' ),
+				__( 'Please configure the Umami Analytics settings.', 'kitestring-analytics-for-umami' ),
 				array( 'p' => array() )
 			);
 			return;
@@ -81,7 +81,7 @@ class DashboardWidget {
 		echo '<p>';
 		echo wp_kses(
 			// translators: %s => Umami Admin page URL.
-			sprintf( __( 'View full analytics on <a href="%s" target="_blank">Umami Analytics</a>', 'simply-analytics-for-umami' ), esc_url( $url ) ),
+			sprintf( __( 'View full analytics on <a href="%s" target="_blank">Umami Analytics</a>', 'kitestring-analytics-for-umami' ), esc_url( $url ) ),
 			array(
 				'a' => array(
 					'href'   => array(),
@@ -108,7 +108,7 @@ class DashboardWidget {
 		}
 
 		// Use a transient to cache stats for 5 minutes.
-		$cache_key = 'simply_umami_stats_' . md5( $options['website_id'] );
+		$cache_key = 'kitestring_umami_stats_' . md5( $options['website_id'] );
 		$cached    = get_transient( $cache_key );
 
 		if ( false !== $cached ) {
@@ -124,7 +124,7 @@ class DashboardWidget {
 		// For self-hosted, login first.
 		if ( ! $client->is_cloud() && $has_api_creds ) {
 			if ( ! $client->login() ) {
-				echo '<p><em>' . esc_html__( 'Could not connect to Umami API. Check your credentials.', 'simply-analytics-for-umami' ) . '</em></p>';
+				echo '<p><em>' . esc_html__( 'Could not connect to Umami API. Check your credentials.', 'kitestring-analytics-for-umami' ) . '</em></p>';
 				return;
 			}
 		}
@@ -136,7 +136,7 @@ class DashboardWidget {
 		$active     = $client->get_active_visitors();
 
 		if ( null === $stats ) {
-			echo '<p><em>' . esc_html__( 'Could not fetch analytics data.', 'simply-analytics-for-umami' ) . '</em></p>';
+			echo '<p><em>' . esc_html__( 'Could not fetch analytics data.', 'kitestring-analytics-for-umami' ) . '</em></p>';
 			return;
 		}
 
@@ -161,18 +161,18 @@ class DashboardWidget {
 	 */
 	private function render_stats_html( array $data ) {
 		?>
-		<div class="simply-umami-stats" style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:12px;">
+		<div class="kitestring-umami-stats" style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:12px;">
 			<div style="text-align:center;padding:8px;background:#f0f0f1;border-radius:4px;">
 				<div style="font-size:24px;font-weight:600;color:#1d2327;"><?php echo esc_html( number_format_i18n( $data['pageviews'] ) ); ?></div>
-				<div style="font-size:12px;color:#50575e;"><?php esc_html_e( 'Pageviews', 'simply-analytics-for-umami' ); ?></div>
+				<div style="font-size:12px;color:#50575e;"><?php esc_html_e( 'Pageviews', 'kitestring-analytics-for-umami' ); ?></div>
 			</div>
 			<div style="text-align:center;padding:8px;background:#f0f0f1;border-radius:4px;">
 				<div style="font-size:24px;font-weight:600;color:#1d2327;"><?php echo esc_html( number_format_i18n( $data['visitors'] ) ); ?></div>
-				<div style="font-size:12px;color:#50575e;"><?php esc_html_e( 'Visitors', 'simply-analytics-for-umami' ); ?></div>
+				<div style="font-size:12px;color:#50575e;"><?php esc_html_e( 'Visitors', 'kitestring-analytics-for-umami' ); ?></div>
 			</div>
 			<div style="text-align:center;padding:8px;background:#f0f0f1;border-radius:4px;">
 				<div style="font-size:24px;font-weight:600;color:#2271b1;"><?php echo esc_html( number_format_i18n( $data['active'] ) ); ?></div>
-				<div style="font-size:12px;color:#50575e;"><?php esc_html_e( 'Active Now', 'simply-analytics-for-umami' ); ?></div>
+				<div style="font-size:12px;color:#50575e;"><?php esc_html_e( 'Active Now', 'kitestring-analytics-for-umami' ); ?></div>
 			</div>
 		</div>
 		<p style="font-size:12px;color:#787c82;margin:0 0 8px;">
@@ -180,7 +180,7 @@ class DashboardWidget {
 			echo esc_html(
 				sprintf(
 					// translators: %1$s visits, %2$s bounces.
-					__( '%1$s visits, %2$s bounces in the last 30 days', 'simply-analytics-for-umami' ),
+					__( '%1$s visits, %2$s bounces in the last 30 days', 'kitestring-analytics-for-umami' ),
 					number_format_i18n( $data['visits'] ),
 					number_format_i18n( $data['bounces'] )
 				)

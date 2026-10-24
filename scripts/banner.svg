@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1544" height="500" viewBox="0 0 1544 500">
   <rect width="1544" height="500" fill="#f2ece1"/>
   <g fill="#1d2327" font-family="Arial, Helvetica, sans-serif">
-    <text x="108" y="166" font-size="78" font-weight="700">Simply Analytics</text>
+    <text x="108" y="166" font-size="70" font-weight="700">Kitestring Analytics</text>
     <text x="108" y="255" font-size="74" font-weight="700">for Umami</text>
     <text x="108" y="326" font-size="32" fill="#5b616b">Independent WordPress integration</text>
     <text x="108" y="372" font-size="28" fill="#5b616b">Self-hosted or Cloud</text>

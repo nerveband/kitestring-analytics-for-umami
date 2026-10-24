@@ -1,5 +1,5 @@
 {
-    "name": "nerveband/simply-analytics-for-umami",
+    "name": "nerveband/kitestring-analytics-for-umami",
     "description": "Independent WordPress integration for Umami Analytics",
     "type": "wordpress-plugin",
     "license": "GPL-3.0-or-later",

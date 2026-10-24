@@ -25,7 +25,7 @@ services:
       WORDPRESS_CONFIG_EXTRA: "define('WP_ENVIRONMENT_TYPE', 'development');"
     volumes: &wordpress-volumes
       - wordpress:/var/www/html
-      - .:/var/www/html/wp-content/plugins/simply-analytics-for-umami:ro
+      - .:/var/www/html/wp-content/plugins/kitestring-analytics-for-umami:ro
     depends_on:
       database:
         condition: service_healthy

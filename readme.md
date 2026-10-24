@@ -1,19 +1,19 @@
-# Simply Analytics for Umami
+# Kitestring Analytics for Umami
 
-![Simply Analytics for Umami: Umami Analytics for WordPress, self-hosted or Cloud.](.wordpress-org/banner-1544x500.png)
+![Kitestring Analytics for Umami: Umami Analytics for WordPress, self-hosted or Cloud.](.wordpress-org/banner-1544x500.png)
 
 Connect WordPress to Umami Analytics. Use your own Umami server or Umami Cloud.
 
 An independent integration maintained by Ashraf Ali, based on Integrate Umami by Ancocodet. It is not affiliated with, endorsed by, or supported by Umami.
 
-Version 1.1.3. Requires WordPress 6.0+ and PHP 7.4+.
+Version 1.1.4. Requires WordPress 6.0+ and PHP 7.4+.
 
 WordPress.org review is in progress. The plugin is not yet listed in the directory.
 
 ## Setup
 
-1. Install the plugin ZIP and activate Simply Analytics for Umami.
-2. Open **Settings > Simply Analytics for Umami**.
+1. Install the plugin ZIP and activate Kitestring Analytics for Umami.
+2. Open **Settings > Kitestring Analytics for Umami**.
 3. Copy the **Script URL** and **Website ID** from Umami.
 4. Check **Enabled** and save.
 5. Clear your page cache and CDN cache, if used.
@@ -21,9 +21,9 @@ WordPress.org review is in progress. The plugin is not yet listed in the directo
 
 API access is optional. Add a username and password for a self-hosted server, or an API key for Umami Cloud, to show stats in WordPress. Tracking works without these details.
 
-## Upgrading from Simply Umami
+## Upgrading from an earlier release
 
-Deactivate the old Simply Umami plugin before installing and activating this renamed plugin. Saved tracking settings and API credentials are retained. Do not run both plugins together.
+Deactivate the previous plugin before installing and activating this renamed plugin. Saved tracking settings and API credentials are retained. Do not run both plugins together.
 
 ## Settings
 
@@ -64,19 +64,19 @@ The plugin does not include a consent banner or ensure legal compliance. You are
 
 ## Developer hooks
 
-Use `simply_umami_tracker_attributes` to change tracker attributes. It receives the attribute map and saved settings.
+Use `kitestring_umami_tracker_attributes` to change tracker attributes. It receives the attribute map and saved settings.
 
 ```php
-add_filter( 'simply_umami_tracker_attributes', function ( $attributes, $options ) {
+add_filter( 'kitestring_umami_tracker_attributes', function ( $attributes, $options ) {
     $attributes['data-tag'] = 'campaign-a';
     return $attributes;
 }, 10, 2 );
 ```
 
-Use `simply_umami_tracking_allowed` to block all tracking on a page, or `simply_umami_recorder_enabled` to block recording only. Both receive the current decision and saved settings.
+Use `kitestring_umami_tracking_allowed` to block all tracking on a page, or `kitestring_umami_recorder_enabled` to block recording only. Both receive the current decision and saved settings.
 
 ```php
-add_filter( 'simply_umami_recorder_enabled', function ( $enabled, $options ) {
+add_filter( 'kitestring_umami_recorder_enabled', function ( $enabled, $options ) {
     return $enabled && ! is_page( array( 'private-pages', 'account' ) );
 }, 10, 2 );
 ```
@@ -101,11 +101,11 @@ Run `npm run env -- run cli -- wp plugin list` for WP-CLI commands and `npm stop
 
 Tested with self-hosted Umami 3.4.0. Signed-in Umami Cloud features have not been tested.
 
-To build a ZIP, run `composer install --no-dev --optimize-autoloader`. Put `simply-analytics-for-umami.php`, `inc/`, `css/`, `js/`, `vendor/`, `composer.json`, `LICENSE.md`, and `readme.txt` in one `simply-analytics-for-umami/` folder. Leave out tests, Git files, credentials, and local settings.
+To build a ZIP, run `composer install --no-dev --optimize-autoloader`. Put `kitestring-analytics-for-umami.php`, `inc/`, `css/`, `js/`, `vendor/`, `composer.json`, `LICENSE.md`, and `readme.txt` in one `kitestring-analytics-for-umami/` folder. Leave out tests, Git files, credentials, and local settings.
 
 ## Changes and assets
 
-Version 1.1.3 removes the remaining npm advisories and tests releases before packaging. Version 1.1.2 restricts dashboard analytics to administrators and preserves API passwords exactly. See [readme.txt](readme.txt) for the full changelog.
+Version 1.1.4 renames the plugin and migrates earlier saved settings. Version 1.1.3 removes the remaining npm advisories and tests releases before packaging. Version 1.1.2 restricts dashboard analytics to administrators and preserves API passwords exactly. See [readme.txt](readme.txt) for the full changelog.
 
 | Asset | Files |
 |---|---|

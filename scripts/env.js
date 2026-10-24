@@ -25,9 +25,9 @@ if (require.main === module) {
         }
         if (compose(['exec', '-T', 'cli', 'wp', 'core', 'is-installed'], { stdio: 'ignore' }).status !== 0) {
             checked(['exec', '-T', 'cli', 'wp', 'core', 'install', `--url=http://localhost:${process.env.WP_PORT || 8888}`,
-                '--title=Simply Analytics Test', '--admin_user=admin', '--admin_password=password', '--admin_email=admin@example.test', '--skip-email']);
+                '--title=Kitestring Analytics Test', '--admin_user=admin', '--admin_password=password', '--admin_email=admin@example.test', '--skip-email']);
         }
-        checked(['exec', '-T', 'cli', 'wp', 'plugin', 'activate', 'simply-analytics-for-umami']);
+        checked(['exec', '-T', 'cli', 'wp', 'plugin', 'activate', 'kitestring-analytics-for-umami']);
     } else if (command === 'stop') {
         checked(['stop']);
     } else if (command === 'run') {

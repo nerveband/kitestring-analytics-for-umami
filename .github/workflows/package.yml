@@ -48,14 +48,14 @@ jobs:
         run: composer install --prefer-dist --no-progress --no-dev --optimize-autoloader
       - name: Package installable plugin
         run: |
-          mkdir -p build/simply-analytics-for-umami
-          cp -R simply-analytics-for-umami.php inc css js vendor composer.json LICENSE.md readme.txt build/simply-analytics-for-umami/
+          mkdir -p build/kitestring-analytics-for-umami
+          cp -R kitestring-analytics-for-umami.php inc css js vendor composer.json LICENSE.md readme.txt build/kitestring-analytics-for-umami/
           cd build
-          zip -r simply-analytics-for-umami.zip simply-analytics-for-umami
+          zip -r kitestring-analytics-for-umami.zip kitestring-analytics-for-umami
       - name: Create GitHub release
         uses: softprops/action-gh-release@v2
         with:
-          files: build/simply-analytics-for-umami.zip
+          files: build/kitestring-analytics-for-umami.zip
 
   wordpress:
     runs-on: ubuntu-latest
@@ -70,4 +70,4 @@ jobs:
         env:
           SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
           SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
-          SLUG: simply-analytics-for-umami
+          SLUG: kitestring-analytics-for-umami

@@ -1,3 +1,17 @@
+# Kitestring Analytics for Umami 1.1.4
+
+The October 24 review rejected the previous public name as too generic. The author chose Kitestring Analytics for Umami, with proposed slug `kitestring-analytics-for-umami`.
+
+The entry file, package folder, text domain, PHP namespace, constants, hooks, option names, script handles, CSS, admin labels, workflows, documentation, tests, banners, and screenshots now use Kitestring. Independent-maintainer wording and upstream attribution remain. Existing settings migrate from `simply_umami_options`, then the older upstream keys, only if the new option is absent. Migration copies the whole array, including credentials, and never overwrites saved Kitestring settings.
+
+PHP standards and production Plugin Check report zero errors and the same two intentional service-managed script-version warnings. The eleven existing browser tests passed. The added settings-and-credentials migration test passed after correcting its test argument formatting. npm and Composer audits are clean. Composer metadata validates, the production ZIP has 25 files and passes integrity checks, and the new banner and settings screenshots were visually inspected with no horizontal overflow.
+
+Remaining `simply` matches are the actual GitHub repository URL, the legacy option key and migration fixture, and the historical 1.1.3 record below. No current plugin name, admin label, asset text, text domain, or package identifier retains the previous brand. This checkout and the Compose project still use the existing local directory name; the installable package uses the Kitestring folder.
+
+Upload the ZIP to the existing review with the requested slug comment. No reviewer email is authorized for this revision. WordPress.org approval remains external.
+
+## Historical 1.1.3 record
+
 # Simply Analytics for Umami 1.1.3 implementation and release plan
 
 The release will remove all reported npm advisories, verify the plugin in its documented test environment, and publish the installable ZIP. WordPress.org publication depends on the directory approving Simply Analytics for Umami and granting repository access.

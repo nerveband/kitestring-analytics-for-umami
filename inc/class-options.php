@@ -1,5 +1,5 @@
 <?php
-namespace SimplyUmami;
+namespace KitestringUmami;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -25,7 +25,7 @@ class Options {
 	public static function get_options(): array {
 		self::maybe_migrate_options();
 		return wp_parse_args(
-			get_option( 'simply_umami_options' ),
+			get_option( 'kitestring_umami_options' ),
 			array(
 				'enabled'           => 0,
 				'script_url'        => '',
@@ -85,15 +85,14 @@ class Options {
 	 * @since 1.0.0 - Migrate from integrate_umami_options and umami_options.
 	 */
 	private static function maybe_migrate_options() {
-		if ( empty( get_option( 'simply_umami_options' ) ) ) {
-			// Try migrate from integrate_umami_options first (most recent).
-			if ( ! empty( get_option( 'integrate_umami_options' ) ) ) {
-				update_option( 'simply_umami_options', get_option( 'integrate_umami_options' ) );
-				delete_option( 'integrate_umami_options' );
-			} elseif ( ! empty( get_option( 'umami_options' ) ) ) {
-				// Fall back to the oldest option name.
-				update_option( 'simply_umami_options', get_option( 'umami_options' ) );
-				delete_option( 'umami_options' );
+		if ( false !== get_option( 'kitestring_umami_options', false ) ) {
+			return;
+		}
+		foreach ( array( 'simply_umami_options', 'integrate_umami_options', 'umami_options' ) as $legacy_key ) {
+			$legacy_options = get_option( $legacy_key, false );
+			if ( is_array( $legacy_options ) ) {
+				update_option( 'kitestring_umami_options', $legacy_options );
+				return;
 			}
 		}
 	}

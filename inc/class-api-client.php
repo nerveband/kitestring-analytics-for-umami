@@ -1,5 +1,5 @@
 <?php
-namespace SimplyUmami;
+namespace KitestringUmami;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;

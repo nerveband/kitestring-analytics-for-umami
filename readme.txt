@@ -1,7 +1,7 @@
-=== Simply Analytics for Umami ===
+=== Kitestring Analytics for Umami ===
 Contributors: nerveband, ancocodet
 Tags: analytics, umami, privacy, statistics
-Stable tag: 1.1.3
+Stable tag: 1.1.4
 Requires at least: 6.0
 Tested up to: 7.1
 Requires PHP: 7.4
@@ -14,7 +14,7 @@ Connect WordPress to your own Umami Analytics instance or Umami Cloud.
 
 An independent integration maintained by Ashraf Ali. This plugin is not affiliated with, endorsed by, or supported by Umami.
 
-Simply Analytics for Umami adds your configured Umami tracking script to public WordPress pages. Tracking is disabled until you configure a script URL and Website ID and explicitly enable it.
+Kitestring Analytics for Umami adds your configured Umami tracking script to public WordPress pages. Tracking is disabled until you configure a script URL and Website ID and explicitly enable it.
 
 Features:
 
@@ -49,9 +49,9 @@ Umami Cloud: [Privacy policy](https://umami.is/privacy) and [Terms](https://umam
 
 == Installation ==
 
-1. Upload the simply-analytics-for-umami directory to /wp-content/plugins/, or upload the plugin ZIP through Plugins > Add New.
-2. Activate Simply Analytics for Umami.
-3. Open Settings > Simply Analytics.
+1. Upload the kitestring-analytics-for-umami directory to /wp-content/plugins/, or upload the plugin ZIP through Plugins > Add New.
+2. Activate Kitestring Analytics for Umami.
+3. Open Settings > Kitestring Analytics.
 4. Copy the Script URL and Website ID from your Umami website's tracking code.
 5. Enable analytics and save changes.
 6. Purge page caches, including LiteSpeed or CDN caches, after changing tracking configuration.
@@ -73,12 +73,12 @@ Umami Cloud availability depends on your subscription and service configuration.
 
 Use Umami's native data-umami-event attributes or umami.track() for custom events and data. Revenue events use event data containing revenue and currency. Use umami.identify() for pseudonymous visitor/session data. These APIs are available after the tracker loads.
 
-The simply_umami_tracker_attributes filter accepts the data-attribute array and saved options. It supports dynamic distinct IDs and new data attributes without editing the plugin. The simply_umami_tracking_allowed filter can prevent both scripts from being emitted on a page; the simply_umami_recorder_enabled filter can selectively exclude pages from recording. See the development README for examples. These server-side filters do not replace a browser consent manager.
+The kitestring_umami_tracker_attributes filter accepts the data-attribute array and saved options. It supports dynamic distinct IDs and new data attributes without editing the plugin. The kitestring_umami_tracking_allowed filter can prevent both scripts from being emitted on a page; the kitestring_umami_recorder_enabled filter can selectively exclude pages from recording. See the development README for examples. These server-side filters do not replace a browser consent manager.
 
 == Frequently Asked Questions ==
 
-= How do I upgrade from Simply Umami? =
-Deactivate Simply Umami before installing and activating Simply Analytics for Umami. Your saved settings and API credentials are retained. Do not enable both plugins together.
+= How do I upgrade from an earlier release? =
+Deactivate the previous plugin before installing and activating Kitestring Analytics for Umami. Your saved settings and API credentials are retained. Do not enable both plugins together.
 
 = Why is no tracking script present? =
 Check that the plugin is active, Enabled is checked, and Script URL and Website ID are filled in. Test signed out, then purge your page cache. Browser blockers, Do Not Track, domain restrictions, or disabled automatic tracking can also prevent collection after the script is present.
@@ -99,9 +99,13 @@ The obsolete data-cache tracker option was removed. It does not control the plug
 
 == Changelog ==
 
+= 1.1.4 =
+* Renamed to Kitestring Analytics for Umami.
+* Migrate saved settings from previous plugin names without overwriting current settings.
+
 = 1.1.3 =
-* Rename the plugin to Simply Analytics for Umami and clarify its independent authorship.
-* Use the simply-analytics-for-umami slug and text domain while retaining saved settings.
+* Rename the plugin and clarify its independent authorship.
+* Update the slug and text domain while retaining saved settings.
 * Remove all remaining npm advisories by replacing wp-env with Docker Compose.
 * Run dependency audits, PHP standards, and browser tests before release packaging.
 * Keep the existing WP-CLI developer commands and browser regression coverage.
@@ -130,10 +134,10 @@ The obsolete data-cache tracker option was removed. It does not control the plug
 * Enqueue scripts through WordPress and declare the recorder's dependency on the tracker.
 * Remove the obsolete data-cache tracker option and correct Do Not Track guidance.
 * Replace PHP 8-only cloud detection with PHP 7.4-compatible hostname matching.
-* Recover the deployed Simply Umami code into its development repository and retain upstream attribution.
+* Recover the previously deployed plugin code into its development repository and retain upstream attribution.
 
 = 1.0.0 =
-* Fork of Integrate Umami with Simply Umami branding.
+* Fork of Integrate Umami with independent branding.
 * Add v3 tracker options, API integration, and a dashboard statistics widget.
 * Add JavaScript-based comment submit-button event tracking.
 * Trim copied tracking values and migrate legacy settings.
